@@ -5,7 +5,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductSerialization extends Product{
+public class Serializacion2 {
     public static void main(String[] args) {
         String[] cod = {"p1", "p2", "p3"};
         String[] desc = {"parafusos", "cravos", "tachas"};

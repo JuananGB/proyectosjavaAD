@@ -31,19 +31,20 @@ getElementText() : devolta o valor de un elemento de texto
 package xmlproba0ler;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 
 public class XMLproba0ler {
-    public static void main(String[] args) {
-        try {
+    public static void main(String[] args) throws FileNotFoundException, XMLStreamException {
+        
             // Crear una instancia de XMLInputFactory
             XMLInputFactory factory = XMLInputFactory.newFactory();
             
             // Abrir un FileInputStream para el archivo XML
-            FileInputStream fileInputStream = new FileInputStream("/home/postgres/NetBeansProjects/XMLproba0//autores.xml"); // Reemplaza con la ubicación de tu archivo XML
+            FileInputStream fileInputStream = new FileInputStream("/home/postgres/NetBeansProjects/ProyectosAD/XMLproba0/autores.xml"); // Reemplaza con la ubicación de tu archivo XML
             
             // Crear un XMLStreamReader para leer el archivo XML
             XMLStreamReader reader = factory.createXMLStreamReader(fileInputStream);
@@ -57,24 +58,29 @@ public class XMLproba0ler {
                     String localName = reader.getLocalName();
                     
                     // Verificar si el elemento coincide con el que estamos buscando
-                    if ("elementName".equals(localName)) {
+                    if ("autor".equals(localName)) {
                         // Obtener el valor del atributo en el índice especificado (reemplaza con el índice deseado)
                         String attributeValue = reader.getAttributeValue(0);
                         System.out.println("Elemento: " + localName + ", Atributo: " + attributeValue);
                     }
-                } else if (eventType == XMLStreamConstants.CHARACTERS) {
+                   if ("nome".equals(localName)) {
                     // Obtener el texto del elemento
-                    String text = reader.getText();
-                    System.out.println("Texto: " + text);
+                    String text = reader.getElementText();
+                    System.out.println("nome: " + text);
                 }
+                   
+                   if ("titulo".equals(localName)) {
+                    // Obtener el texto del elemento
+                    String text = reader.getElementText();
+                    System.out.println("titulo: " + text);
+                } 
+                   
+                   
             }
 
             // Cerrar el lector
             reader.close();
-        } catch (XMLStreamException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+        
         }
     }
 }

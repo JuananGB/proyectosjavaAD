@@ -1,23 +1,20 @@
 
 package serializacion2;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.PrintStream;
-import java.util.ArrayList;
+import java.io.Serializable;
 
-import java.io.*;
-
-class Product implements Serializable {
-    private String codigo;
+/**
+ *
+ * @author postgres
+ */
+public class Product implements Serializable {
+      private String codigo;
     private String descricion;
     private Double prezo;
 
     // Constructor por defecto
     public Product() {
-        this.codigo = null;
-        this.descricion = null;
-        this.prezo = 0.0;
+  
     }
 
     // Constructor con tres parámetros
@@ -54,6 +51,3 @@ class Product implements Serializable {
         this.prezo = prezo;
     }
 }
-
-
- 
